@@ -18,6 +18,7 @@ public class Deploy101Application {
     public String home() {
         //simple comment
         //second comment
+        //third comment
         return "Hello Docker World";
     }
 
