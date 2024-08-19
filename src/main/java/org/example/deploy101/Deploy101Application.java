@@ -16,6 +16,7 @@ public class Deploy101Application {
 
     @RequestMapping("/")
     public String home() {
+        //simple comment
         return "Hello Docker World";
     }
 
