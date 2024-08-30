@@ -1,6 +1,7 @@
 package org.example.deploy101.consumer;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.deploy101.model.FileMetadata;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaConsumer {
 
-    @KafkaListener(topics = "deploy101-topic", groupId = "deploy101-group")
-    public void consume(String message) {
-        log.info("consumed message - " + message);
-    }
+    private static final String TOPIC = "config_topic";
+    private static final String GROUP = "config-group";
 
+    @KafkaListener(topics = TOPIC, groupId = GROUP)
+    public void consume(FileMetadata fileMetadata) {
+        log.info("consumed message - " + fileMetadata);
+    }
 }

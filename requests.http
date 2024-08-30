@@ -1,1 +1,4 @@
 POST localhost:8081/?message=world
+
+###
+GET localhost:8081/

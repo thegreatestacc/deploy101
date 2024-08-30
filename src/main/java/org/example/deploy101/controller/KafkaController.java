@@ -3,8 +3,7 @@ package org.example.deploy101.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.deploy101.producer.KafkaProducer;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,9 +19,14 @@ public class KafkaController {
 
     private final KafkaProducer kafkaProducer;
 
-    @PostMapping
-    public void sendMessageToKafka(@RequestParam String message) {
-        kafkaProducer.send(message);
-        log.info("message send from controller - " + message);
+    @GetMapping
+    public void triggerProducer() {
+        kafkaProducer.sendMessageEachSecond();
     }
+
+//    @PostMapping
+//    public void sendMessageToKafka(@RequestParam String message) {
+//        kafkaProducer.send(message);
+//        log.info("message send from controller - " + message);
+//    }
 }
